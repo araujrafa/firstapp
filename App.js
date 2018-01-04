@@ -12,7 +12,8 @@ import {
   View,
   Button
 } from 'react-native';
-import { StackNavigator } from 'react-navigation';
+import { TabNavigator } from 'react-navigation';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const HomeScreen = ( { navigation } ) => (
   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -24,25 +25,39 @@ const HomeScreen = ( { navigation } ) => (
   </View>
 );
 
-const DetailsScreen = () => (
+const ProfileScreen = () => (
   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    <Text>Tela de detalhes</Text>
+    <Text>Tela de Perfil</Text>
   </View>
 );
 
-const RooterNavigator = StackNavigator({
+const RootTabs = TabNavigator({
   Home: {
     screen: HomeScreen,
     navigationOptions: {
-      headerTitle: 'Home',
-    }
-  }, 
-  Details: {
-    screen: DetailsScreen,
+      tabBarLabel: 'Home',
+      tabBarIcon: ({ tintColor, focused }) => (
+        <Ionicons
+          name={focused ? 'ios-home' : 'ios-home-outline'}
+          size={26}
+          style={{ color: tintColor }}
+        />
+      ),
+    },
+  },
+  Profile: {
+    screen: ProfileScreen,
     navigationOptions: {
-      headerTitle: 'Details',
-    }
-  }
+      tabBarLabel: 'Profile',
+      tabBarIcon: ({ tintColor, focused }) => (
+        <Ionicons
+          name={focused ? 'ios-person' : 'ios-person-outline'}
+          size={26}
+          style={{ color: tintColor }}
+        />
+      ),
+    },
+  },
 });
 
-export default RooterNavigator;
+export default RootTabs;
