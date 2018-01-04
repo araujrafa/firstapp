@@ -12,14 +12,14 @@ import {
   View,
   Button
 } from 'react-native';
-import { TabNavigator } from 'react-navigation';
+import { DrawerNavigator } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const HomeScreen = ( { navigation } ) => (
   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
     <Text>Minha Home</Text>
     <Button 
-      onPress={() => navigation.navigate('Details')}
+      onPress={() => navigation.navigate('DrawerToggle')}
       title="Vai para Detalhes"
     />
   </View>
@@ -31,7 +31,7 @@ const ProfileScreen = () => (
   </View>
 );
 
-const RootTabs = TabNavigator({
+const RootDrawer = DrawerNavigator({
   Home: {
     screen: HomeScreen,
     navigationOptions: {
@@ -60,4 +60,4 @@ const RootTabs = TabNavigator({
   },
 });
 
-export default RootTabs;
+export default RootDrawer;
